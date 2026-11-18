@@ -1,0 +1,113 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Sleek subtle scrollbar for sidebar navigation */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+.custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: #cbd5e1 transparent;
+}
+
+/* ============================================================ */
+/* PRINT STYLES FOR CLEAN OFFICIAL GOVERNMENT PDF / PRINTS      */
+/* ============================================================ */
+@media print {
+    @page {
+        size: A4 portrait;
+        margin: 12mm 10mm 15mm 10mm;
+    }
+
+    html, body {
+        background: #ffffff !important;
+        color: #000000 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 100% !important;
+        min-height: auto !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
+    /* Hide website UI chrome: navbar, sidebar, buttons, floating elements */
+    aside,
+    header,
+    nav,
+    .print\:hidden,
+    [role="alert"],
+    .fixed {
+        display: none !important;
+    }
+
+    /* Force display print components */
+    .print\:block {
+        display: block !important;
+    }
+
+    .print\:flex {
+        display: flex !important;
+    }
+
+    .print\:table {
+        display: table !important;
+    }
+
+    /* Reset layout container margins and padding */
+    .lg\:pl-64 {
+        padding-left: 0 !important;
+        margin-left: 0 !important;
+    }
+
+    main {
+        padding: 0 !important;
+        margin: 0 !important;
+        background: #ffffff !important;
+        width: 100% !important;
+    }
+
+    /* Table styling for official documents */
+    table {
+        width: 100% !important;
+        border-collapse: collapse !important;
+        page-break-inside: auto;
+    }
+
+    thead {
+        display: table-header-group !important;
+    }
+
+    tr {
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+    }
+
+    th, td {
+        border-color: #000000 !important;
+    }
+
+    /* Avoid page-breaks on signature block */
+    .print\:break-inside-avoid,
+    .break-inside-avoid {
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+    }
+
+    /* Remove shadows, glow, and border radius on paper */
+    *, *::before, *::after {
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+}
+
